@@ -30,6 +30,11 @@ class TodoListViewControllerSpec: QuickSpec {
                     let hasTableView = todolistViewController.view.subviews.contains(where: { $0 is UITableView })
                     expect(hasTableView).to(beTrue())
                 }
+                
+                it("has add button on navigation bar") {
+                    let hasOneRightBarItem = todolistViewController.navigationItem.rightBarButtonItems?.count == 1
+                    expect(hasOneRightBarItem).to(beTrue())
+                }
             }
         }
     }
