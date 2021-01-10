@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import SnapKit
 
 class TodoListViewController: UIViewController {
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        view.addSubview(tableView)
+        
+        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setContraints()
     }
 
-
+    private func setContraints() {
+        tableView.snp.makeConstraints({
+            $0.leading.top.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        })
+    }
 }
 
