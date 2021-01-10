@@ -30,7 +30,7 @@ class EditTodoViewControllerSpec: QuickSpec {
                     let hasTextField = editTodoViewController.view.subviews.contains(where: { $0 is UITextField })
                     expect(hasTextField).to(beTrue())
                     
-                    let hasButton = editTodoViewController.view.subviews.contains(where: { $0 is UITextField })
+                    let hasButton = editTodoViewController.navigationItem.rightBarButtonItems?.count == 1
                     expect(hasButton).to(beTrue())
                 }
             }
