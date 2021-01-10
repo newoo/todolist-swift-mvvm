@@ -9,6 +9,9 @@
 import UIKit
 
 class EditTodoViewController: UIViewController {
+    let textFieldSideMargin = CGFloat(16)
+    let textFieldTopMargin = CGFloat(16)
+    
     lazy var todoTitleTextField: UITextField = {
         let textField = UITextField()
         view.addSubview(textField)
@@ -30,8 +33,8 @@ class EditTodoViewController: UIViewController {
     private func setContraints() {
         todoTitleTextField.borderStyle = .roundedRect
         todoTitleTextField.snp.makeConstraints({
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(32)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(textFieldSideMargin)
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(textFieldTopMargin)
         })
     }
 }
