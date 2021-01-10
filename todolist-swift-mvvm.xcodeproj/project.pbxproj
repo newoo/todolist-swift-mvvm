@@ -13,7 +13,7 @@
 		53F109CF25AB20DE001DE388 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53F109CD25AB20DE001DE388 /* Main.storyboard */; };
 		53F109D125AB20DF001DE388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53F109D025AB20DF001DE388 /* Assets.xcassets */; };
 		53F109D425AB20DF001DE388 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53F109D225AB20DF001DE388 /* LaunchScreen.storyboard */; };
-		53F109DF25AB20DF001DE388 /* todolist_swift_mvvmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F109DE25AB20DF001DE388 /* todolist_swift_mvvmTests.swift */; };
+		53F109DF25AB20DF001DE388 /* TodoListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F109DE25AB20DF001DE388 /* TodoListViewControllerSpec.swift */; };
 		72ED18F7B57E893083370924 /* Pods_todolist_swift_mvvmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3403759815A358EA569735 /* Pods_todolist_swift_mvvmTests.framework */; };
 		E018833F32F04352AA678562 /* Pods_todolist_swift_mvvm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E1817C3BC59A8E1C53CFA7 /* Pods_todolist_swift_mvvm.framework */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,7 @@
 		53F109D325AB20DF001DE388 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53F109D525AB20DF001DE388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53F109DA25AB20DF001DE388 /* todolist-swift-mvvmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "todolist-swift-mvvmTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		53F109DE25AB20DF001DE388 /* todolist_swift_mvvmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todolist_swift_mvvmTests.swift; sourceTree = "<group>"; };
+		53F109DE25AB20DF001DE388 /* TodoListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewControllerSpec.swift; sourceTree = "<group>"; };
 		53F109E025AB20DF001DE388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A068FE56A849D726A60F2F5 /* Pods-todolist-swift-mvvmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todolist-swift-mvvmTests.release.xcconfig"; path = "Target Support Files/Pods-todolist-swift-mvvmTests/Pods-todolist-swift-mvvmTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8E1817C3BC59A8E1C53CFA7 /* Pods_todolist_swift_mvvm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todolist_swift_mvvm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,7 +114,7 @@
 		53F109DD25AB20DF001DE388 /* todolist-swift-mvvmTests */ = {
 			isa = PBXGroup;
 			children = (
-				53F109DE25AB20DF001DE388 /* todolist_swift_mvvmTests.swift */,
+				53F109DE25AB20DF001DE388 /* TodoListViewControllerSpec.swift */,
 				53F109E025AB20DF001DE388 /* Info.plist */,
 			);
 			path = "todolist-swift-mvvmTests";
@@ -327,7 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53F109DF25AB20DF001DE388 /* todolist_swift_mvvmTests.swift in Sources */,
+				53F109DF25AB20DF001DE388 /* TodoListViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
