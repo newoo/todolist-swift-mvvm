@@ -24,6 +24,7 @@ class TodoListViewControllerSpec: QuickSpec {
                 
                 override func moveToEditTodoView(with todo: Todo? = nil) {
                     isCalledMoveToEditTodoView = true
+                    super.moveToEditTodoView(with: todo)
                 }
             }
             
@@ -58,7 +59,11 @@ class TodoListViewControllerSpec: QuickSpec {
             context("when tap add button") {
                 it("move to EditTodoViewController") {
                     todolistViewController.navigationItem.rightBarButtonItem?.sendAction()
+                    
                     expect(todolistViewController.isCalledMoveToEditTodoView).toEventually(beTrue(), timeout: .seconds(3))
+                    expect(todolistViewController.navigationController?.viewControllers.count).toEventually(equal(2), timeout: .seconds(3))
+                    expect(todolistViewController.navigationController?.viewControllers.last is EditTodoViewController)
+                        .toEventually(beTrue(), timeout: .seconds(3))
                 }
             }
             
