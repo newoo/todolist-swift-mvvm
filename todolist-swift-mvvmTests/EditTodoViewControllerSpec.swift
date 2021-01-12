@@ -8,6 +8,8 @@
 
 import Quick
 import Nimble
+import RxSwift
+import RxCocoa
 @testable import todolist_swift_mvvm
 
 class EditTodoViewControllerSpec: QuickSpec {
@@ -32,8 +34,53 @@ class EditTodoViewControllerSpec: QuickSpec {
                     
                     let hasButton = editTodoViewController.navigationItem.rightBarButtonItems?.count == 1
                     expect(hasButton).to(beTrue())
+                    
+                    
+                    
+//                    var disposeBag = DisposeBag()
+//                    var isDoneButtonTappedCount = 0
+//                    editTodoViewController.viewModel.editedTodoInput
+//                        .subscribe(onNext: {
+//                            isDoneButtonTappedCount
+//                        }).diposed(by: disposeBag)
+                }
+            }
+            
+            context("when tapped done button") {
+                it("editTodoInput observable emit event") {
+                    var isDoneButtonTappedCount = 0
+                    
+                    editTodoViewController.todoTitleTextField.text = "todo"
+                    var expectedTodoTitle = ""
+
+                    let disposeBag = DisposeBag()
+
+                    editTodoViewController.navigationItem.rightBarButtonItem?.rx.tap
+                        .subscribe(onNext: {
+                            isDoneButtonTappedCount = isDoneButtonTappedCount + 1
+                        }).disposed(by: disposeBag)
+
+                    editTodoViewController.viewModel.editTodoInput
+                        .subscribe(onNext: {
+                            expectedTodoTitle = $0
+                        }).disposed(by: disposeBag)
+
+                    editTodoViewController.navigationItem.rightBarButtonItem?.sendAction()
+
+                    expect(isDoneButtonTappedCount).toEventually(equal(1), timeout: .seconds(3))
+                    expect(expectedTodoTitle = $0).toEventually(equal("todo"), timeout: .seconds(3))
+                    
                 }
             }
         }
+    }
+}
+
+fileprivate extension UIBarButtonItem {
+    func sendAction() {
+        guard let myTarget = target else { return }
+        guard let myAction = action else { return }
+        let control: UIControl = UIControl()
+        control.sendAction(myAction, to: myTarget, for: nil)
     }
 }
