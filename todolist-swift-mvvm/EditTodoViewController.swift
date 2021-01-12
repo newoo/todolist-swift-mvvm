@@ -62,5 +62,9 @@ class EditTodoViewController: UIViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.todoOutput.asDriver()
+            .drive(todoTitleTextField.rx.text)
+            .disposed(by: disposeBag)
     }
 }

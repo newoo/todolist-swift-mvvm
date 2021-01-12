@@ -12,14 +12,20 @@ import RxCocoa
 
 class EditTodoViewModel {
     let editedTodoInput: PublishSubject<String>
+    let todoOutput: BehaviorRelay<String>
+    
+    let todoId: Int
     
     var disposeBag = DisposeBag()
     
     init(todo: Todo? = nil) {
+        todoId = todo?.id ?? 0
+        
         editedTodoInput = PublishSubject<String>()
+        todoOutput = BehaviorRelay<String>(value: todo?.title ?? "")
         
         editedTodoInput.map({ [weak self] in
-                Todo(id: 0, title: $0)
+                Todo(id: self?.todoId ?? 0, title: $0)
             }).bind(to: editedTodoSubject)
             .disposed(by: disposeBag)
     }
