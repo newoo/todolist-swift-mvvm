@@ -65,12 +65,3 @@ class EditTodoViewControllerSpec: QuickSpec {
         }
     }
 }
-
-fileprivate extension UIBarButtonItem {
-    func sendAction() {
-        guard let myTarget = target else { return }
-        guard let myAction = action else { return }
-        let control: UIControl = UIControl()
-        control.sendAction(myAction, to: myTarget, for: nil)
-    }
-}

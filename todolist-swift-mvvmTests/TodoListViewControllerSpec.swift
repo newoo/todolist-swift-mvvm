@@ -8,6 +8,7 @@
 
 import Quick
 import Nimble
+import RxSwift
 @testable import todolist_swift_mvvm
 
 class TodoListViewControllerSpec: QuickSpec {
@@ -18,16 +19,28 @@ class TodoListViewControllerSpec: QuickSpec {
                 static let newTodo = Todo(id: 3, title: "TODO3")
             }
             
-            var todolistViewController: TodoListViewController!
+            class MockTodoListViewController: TodoListViewController, UITableViewDelegate {
+                var isCalledMoveToEditTodoView = false
+                
+                override func moveToEditTodoView(with todo: Todo? = nil) {
+                    isCalledMoveToEditTodoView = true
+                }
+            }
+            
+            var todolistViewController: MockTodoListViewController!
             
             beforeEach {
-                todolistViewController = TodoListViewController()
+                let navigationViewController = UINavigationController()
+                todolistViewController = MockTodoListViewController()
+                navigationViewController.addChild(todolistViewController)
                 let window = UIWindow(frame: UIScreen.main.bounds)
                 window.makeKeyAndVisible()
-                window.rootViewController = todolistViewController
+                window.rootViewController = navigationViewController
                 
                 todolistViewController.beginAppearanceTransition(true, animated: false)
                 todolistViewController.endAppearanceTransition()
+                
+                todolistViewController.isCalledMoveToEditTodoView = false
             }
             
             context("when be loaded") {
@@ -39,6 +52,13 @@ class TodoListViewControllerSpec: QuickSpec {
                 it("has add button on navigation bar") {
                     let hasOneRightBarItem = todolistViewController.navigationItem.rightBarButtonItems?.count == 1
                     expect(hasOneRightBarItem).to(beTrue())
+                }
+            }
+            
+            context("when tap add button") {
+                it("move to EditTodoViewController") {
+                    todolistViewController.navigationItem.rightBarButtonItem?.sendAction()
+                    expect(todolistViewController.isCalledMoveToEditTodoView).toEventually(beTrue(), timeout: .seconds(3))
                 }
             }
             
