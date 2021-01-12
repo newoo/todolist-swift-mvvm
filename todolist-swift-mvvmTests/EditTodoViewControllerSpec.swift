@@ -34,15 +34,6 @@ class EditTodoViewControllerSpec: QuickSpec {
                     
                     let hasButton = editTodoViewController.navigationItem.rightBarButtonItems?.count == 1
                     expect(hasButton).to(beTrue())
-                    
-                    
-                    
-//                    var disposeBag = DisposeBag()
-//                    var isDoneButtonTappedCount = 0
-//                    editTodoViewController.viewModel.editedTodoInput
-//                        .subscribe(onNext: {
-//                            isDoneButtonTappedCount
-//                        }).diposed(by: disposeBag)
                 }
             }
             
@@ -59,8 +50,8 @@ class EditTodoViewControllerSpec: QuickSpec {
                         .subscribe(onNext: {
                             isDoneButtonTappedCount = isDoneButtonTappedCount + 1
                         }).disposed(by: disposeBag)
-
-                    editTodoViewController.viewModel.editTodoInput
+                    
+                    editTodoViewController.viewModel.editedTodoInput
                         .subscribe(onNext: {
                             expectedTodoTitle = $0
                         }).disposed(by: disposeBag)
@@ -68,8 +59,7 @@ class EditTodoViewControllerSpec: QuickSpec {
                     editTodoViewController.navigationItem.rightBarButtonItem?.sendAction()
 
                     expect(isDoneButtonTappedCount).toEventually(equal(1), timeout: .seconds(3))
-                    expect(expectedTodoTitle = $0).toEventually(equal("todo"), timeout: .seconds(3))
-                    
+                    expect(expectedTodoTitle).toEventually(equal("todo"), timeout: .seconds(3))
                 }
             }
         }
