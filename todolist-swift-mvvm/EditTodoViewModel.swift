@@ -17,5 +17,10 @@ class EditTodoViewModel {
     
     init(todo: Todo? = nil) {
         editedTodoInput = PublishSubject<String>()
+        
+        editedTodoInput.map({ [weak self] in
+                Todo(id: 0, title: $0)
+            }).bind(to: editedTodoSubject)
+            .disposed(by: disposeBag)
     }
 }

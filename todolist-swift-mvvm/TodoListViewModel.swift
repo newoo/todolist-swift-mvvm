@@ -44,5 +44,19 @@ class TodoListViewModel {
             return nil
         }).bind(to: selectedTodoOutput)
         .disposed(by: disposeBag)
+        
+        editedTodoSubject.map({ [weak self] editedTodo in
+            if editedTodo.id == 0 {
+                var editedTodo = editedTodo
+                editedTodo.id = (self?.todos.count ?? 0) + 1
+                self?.todos.append(editedTodo)
+                return self?.todos ?? []
+            }
+            
+            return self?.todos.map({
+                editedTodo.id == $0.id ? editedTodo : $0
+            }) ?? []
+        }).bind(to: todosOutput)
+        .disposed(by: disposeBag)
     }
 }

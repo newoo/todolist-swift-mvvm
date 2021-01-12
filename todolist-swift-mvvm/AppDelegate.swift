@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxSwift
+
+let editedTodoSubject = PublishSubject<Todo>()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

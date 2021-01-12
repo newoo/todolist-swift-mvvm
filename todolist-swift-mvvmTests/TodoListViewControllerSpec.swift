@@ -88,9 +88,8 @@ class TodoListViewControllerSpec: QuickSpec {
                 
                 context("with new todo") {
                     it("show new todo with old todos") {
-                        var todoList = Constant.todoList
-                        todoList.append(Constant.newTodo)
-                        todolistViewController.viewModel.todosOutput.onNext(todoList)
+                        let editTodoViewModel = EditTodoViewModel()
+                        editTodoViewModel.editedTodoInput.onNext(Constant.newTodo.title)
                         
                         let todosCount = todolistViewController.tableView.visibleCells.count
                         expect(todosCount).toEventually(equal(3), timeout: .seconds(3))
