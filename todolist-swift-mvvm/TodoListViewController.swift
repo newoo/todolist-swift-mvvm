@@ -58,6 +58,11 @@ class TodoListViewController: UIViewController {
             )) { _, item, cell in
                 cell.todoInput.onNext(item.title)
             }.disposed(by: disposeBag)
+        
+        tableView.rx.itemDeleted
+            .map({ $0.row })
+            .bind(to: viewModel.deletedIndexInput)
+            .disposed(by: disposeBag)
     }
 }
 
