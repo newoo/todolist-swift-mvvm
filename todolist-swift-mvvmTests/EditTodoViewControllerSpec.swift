@@ -37,6 +37,24 @@ class EditTodoViewControllerSpec: QuickSpec {
                 }
             }
             
+            context("with todo data") {
+                it("show todo title") {
+                    let viewModel = EditTodoViewModel(todo: Todo(id: 0, title: "TODO"))
+                    editTodoViewController = EditTodoViewController(viewModel: viewModel)
+                    
+                    let window = UIWindow(frame: UIScreen.main.bounds)
+                    window.makeKeyAndVisible()
+                    window.rootViewController = editTodoViewController
+                    
+                    editTodoViewController.beginAppearanceTransition(true, animated: false)
+                    editTodoViewController.endAppearanceTransition()
+                    
+                    let todoTitle = editTodoViewController.todoTitleTextField.text
+                    
+                    expect(todoTitle).to(equal("TODO"))
+                }
+            }
+            
             context("when tapped done button") {
                 it("editedTodoInput observable emit event") {
                     var isDoneButtonTappedCount = 0
