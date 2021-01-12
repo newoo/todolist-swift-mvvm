@@ -16,12 +16,16 @@ class TodoListViewModel {
     var disposeBag = DisposeBag()
     
     let todosOutput: BehaviorSubject<[Todo]>
+    let selectedTodoOutput: PublishSubject<Todo>
     
+    let selectedIndexInput: PublishSubject<Int>
     let deletedIndexInput: PublishSubject<Int>
     
     init() {
         todosOutput = BehaviorSubject<[Todo]>(value: todos)
+        selectedTodoOutput = PublishSubject<Todo>()
         
+        selectedIndexInput = PublishSubject<Int>()
         deletedIndexInput = PublishSubject<Int>()
         
         deletedIndexInput.subscribe(onNext: { [weak self] in
@@ -31,5 +35,14 @@ class TodoListViewModel {
                 self?.todosOutput.onNext(todos)
             }
         }).disposed(by: disposeBag)
+        
+        selectedIndexInput.compactMap({ [weak self] in
+            if let count = self?.todos.count, count > $0 {
+                return self?.todos[$0]
+            }
+            
+            return nil
+        }).bind(to: selectedTodoOutput)
+        .disposed(by: disposeBag)
     }
 }

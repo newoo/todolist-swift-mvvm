@@ -68,6 +68,16 @@ class TodoListViewController: UIViewController {
             .map({ $0.row })
             .bind(to: viewModel.deletedIndexInput)
             .disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .map({ $0.row })
+            .bind(to: viewModel.selectedIndexInput)
+            .disposed(by: disposeBag)
+        
+        viewModel.selectedTodoOutput
+            .subscribe(onNext: { [weak self] in
+                self?.moveToEditTodoView(with: $0)
+            }).disposed(by: disposeBag)
     }
     
     func moveToEditTodoView(with todo: Todo? = nil) {
