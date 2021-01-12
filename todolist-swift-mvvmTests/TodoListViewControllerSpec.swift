@@ -121,6 +121,33 @@ class TodoListViewControllerSpec: QuickSpec {
                         expect(todoTitle).toEventually(equal(Constant.todoList[1].title), timeout: .seconds(3))
                     }
                 }
+                
+                context("when tap UITableViewCell") {
+                    it("get selected todo data and move EditTodoViewController") {
+                        var todo: Todo?
+                        
+                        let disposeBag = DisposeBag()
+                        
+                        var resultIndexPath: IndexPath? = nil
+                        
+                        todolistViewController.tableView.rx.itemSelected
+                            .subscribe(onNext: {
+                                resultIndexPath = $0
+                            }).disposed(by: disposeBag)
+                        
+                        todolistViewController.viewModel.selectedTodoOutput
+                            .subscribe(onNext: {
+                                todo = $0
+                            }).disposed(by: disposeBag)
+                        
+                        todolistViewController.tableView.delegate?.tableView?(todolistViewController.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+                        
+                        expect(resultIndexPath).toEventually(equal(IndexPath(row: 0, section: 0)), timeout: .seconds(3))
+                        expect(todo?.title).toEventually(equal(Constant.todoList.first?.title), timeout: .seconds(3))
+                        expect(todolistViewController.navigationController?.viewControllers.last is EditTodoViewController)
+                            .toEventually(beTrue(), timeout: .seconds(3))
+                    }
+                }
             }
         }
     }
