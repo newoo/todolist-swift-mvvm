@@ -38,7 +38,7 @@ class EditTodoViewControllerSpec: QuickSpec {
             }
             
             context("when tapped done button") {
-                it("editTodoInput observable emit event") {
+                it("editedTodoInput observable emit event") {
                     var isDoneButtonTappedCount = 0
                     
                     editTodoViewController.todoTitleTextField.text = "todo"

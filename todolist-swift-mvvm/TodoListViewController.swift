@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import RxCocoa
+import RxSwift
 
 class TodoListViewController: UIViewController {
     lazy var tableView: UITableView = {
@@ -16,6 +18,19 @@ class TodoListViewController: UIViewController {
         
         return tableView
     }()
+    
+    var viewModel: TodoListViewViewModel
+    var disposeBag = DisposeBag()
+    
+    init(viewModel: TodoListViewViewModel = TodoListViewViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        viewModel = TodoListViewViewModel()
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

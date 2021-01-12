@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		53024E2225ADBB4B005D93C5 /* EditTodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53024E2125ADBB4B005D93C5 /* EditTodoViewModel.swift */; };
+		53024E2625ADC515005D93C5 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53024E2525ADC515005D93C5 /* TodoTableViewCell.swift */; };
+		53024E2A25ADC675005D93C5 /* TodoListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53024E2925ADC675005D93C5 /* TodoListViewViewModel.swift */; };
 		53F109C825AB20DE001DE388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F109C725AB20DE001DE388 /* AppDelegate.swift */; };
 		53F109CA25AB20DE001DE388 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F109C925AB20DE001DE388 /* SceneDelegate.swift */; };
 		53F109CC25AB20DE001DE388 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F109CB25AB20DE001DE388 /* TodoListViewController.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		207F38CFB875CCCF4A383F17 /* Pods-todolist-swift-mvvm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todolist-swift-mvvm.debug.xcconfig"; path = "Target Support Files/Pods-todolist-swift-mvvm/Pods-todolist-swift-mvvm.debug.xcconfig"; sourceTree = "<group>"; };
 		53024E2125ADBB4B005D93C5 /* EditTodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodoViewModel.swift; sourceTree = "<group>"; };
+		53024E2525ADC515005D93C5 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		53024E2925ADC675005D93C5 /* TodoListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewViewModel.swift; sourceTree = "<group>"; };
 		53F109C425AB20DE001DE388 /* todolist-swift-mvvm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "todolist-swift-mvvm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F109C725AB20DE001DE388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53F109C925AB20DE001DE388 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,14 +114,16 @@
 			children = (
 				53F109C725AB20DE001DE388 /* AppDelegate.swift */,
 				53F109C925AB20DE001DE388 /* SceneDelegate.swift */,
+				53024E2525ADC515005D93C5 /* TodoTableViewCell.swift */,
 				53F109CB25AB20DE001DE388 /* TodoListViewController.swift */,
+				53024E2925ADC675005D93C5 /* TodoListViewViewModel.swift */,
+				53F109F325AB529C001DE388 /* EditTodoViewController.swift */,
+				53024E2125ADBB4B005D93C5 /* EditTodoViewModel.swift */,
 				53F109CD25AB20DE001DE388 /* Main.storyboard */,
 				53F109D025AB20DF001DE388 /* Assets.xcassets */,
 				53F109D225AB20DF001DE388 /* LaunchScreen.storyboard */,
 				53F109D525AB20DF001DE388 /* Info.plist */,
 				53F109F125AB5237001DE388 /* Todo.swift */,
-				53F109F325AB529C001DE388 /* EditTodoViewController.swift */,
-				53024E2125ADBB4B005D93C5 /* EditTodoViewModel.swift */,
 			);
 			path = "todolist-swift-mvvm";
 			sourceTree = "<group>";
@@ -329,12 +335,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53024E2625ADC515005D93C5 /* TodoTableViewCell.swift in Sources */,
 				53F109CC25AB20DE001DE388 /* TodoListViewController.swift in Sources */,
 				53F109C825AB20DE001DE388 /* AppDelegate.swift in Sources */,
 				53024E2225ADBB4B005D93C5 /* EditTodoViewModel.swift in Sources */,
 				53F109CA25AB20DE001DE388 /* SceneDelegate.swift in Sources */,
 				53F109F425AB529C001DE388 /* EditTodoViewController.swift in Sources */,
 				53F109F225AB5237001DE388 /* Todo.swift in Sources */,
+				53024E2A25ADC675005D93C5 /* TodoListViewViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
