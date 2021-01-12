@@ -14,21 +14,22 @@ import RxSwift
 class TodoListViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(TodoTableViewCell.self, forCellReuseIdentifier: TodoTableViewCell.identifier)
         view.addSubview(tableView)
         
         return tableView
     }()
     
-    var viewModel: TodoListViewViewModel
+    var viewModel: TodoListViewModel
     var disposeBag = DisposeBag()
     
-    init(viewModel: TodoListViewViewModel = TodoListViewViewModel()) {
+    init(viewModel: TodoListViewModel = TodoListViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        viewModel = TodoListViewViewModel()
+        viewModel = TodoListViewModel()
         super.init(coder: aDecoder)
     }
 
@@ -36,6 +37,7 @@ class TodoListViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setContraints()
+        setBindings()
     }
     
     private func setNavigationBar() {
@@ -46,6 +48,16 @@ class TodoListViewController: UIViewController {
         tableView.snp.makeConstraints({
             $0.leading.top.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         })
+    }
+    
+    private func setBindings() {
+        viewModel.todosOutput
+            .bind(to: tableView.rx.items(
+                cellIdentifier: TodoTableViewCell.identifier,
+                cellType: TodoTableViewCell.self
+            )) { _, item, cell in
+                cell.todoInput.onNext(item.title)
+            }.disposed(by: disposeBag)
     }
 }
 

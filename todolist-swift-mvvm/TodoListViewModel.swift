@@ -1,5 +1,5 @@
 //
-//  TodoListViewViewModel.swift
+//  TodoListViewModel.swift
 //  todolist-swift-mvvm
 //
 //  Created by law on 2021/01/12.
@@ -10,7 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class TodoListViewViewModel {
+class TodoListViewModel {
     var todos = [Todo]()
     
     let todosOutput: BehaviorSubject<[Todo]>
