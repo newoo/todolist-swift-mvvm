@@ -51,6 +51,11 @@ class TodoListViewController: UIViewController {
     }
     
     private func setBindings() {
+        navigationItem.rightBarButtonItem?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.moveToEditTodoView()
+            }).disposed(by: disposeBag)
+        
         viewModel.todosOutput
             .bind(to: tableView.rx.items(
                 cellIdentifier: TodoTableViewCell.identifier,
@@ -63,6 +68,11 @@ class TodoListViewController: UIViewController {
             .map({ $0.row })
             .bind(to: viewModel.deletedIndexInput)
             .disposed(by: disposeBag)
+    }
+    
+    func moveToEditTodoView(with todo: Todo? = nil) {
+        let editTodoViewModel = EditTodoViewModel(todo: todo)
+        navigationController?.pushViewController(EditTodoViewController(viewModel: editTodoViewModel), animated: true)
     }
 }
 

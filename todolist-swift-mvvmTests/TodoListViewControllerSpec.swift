@@ -19,7 +19,7 @@ class TodoListViewControllerSpec: QuickSpec {
                 static let newTodo = Todo(id: 3, title: "TODO3")
             }
             
-            class MockTodoListViewController: TodoListViewController, UITableViewDelegate {
+            class MockTodoListViewController: TodoListViewController {
                 var isCalledMoveToEditTodoView = false
                 
                 override func moveToEditTodoView(with todo: Todo? = nil) {

@@ -15,7 +15,7 @@ class EditTodoViewModel {
     
     var disposeBag = DisposeBag()
     
-    init() {
+    init(todo: Todo? = nil) {
         editedTodoInput = PublishSubject<String>()
     }
 }

@@ -10,6 +10,7 @@
 		53024E2225ADBB4B005D93C5 /* EditTodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53024E2125ADBB4B005D93C5 /* EditTodoViewModel.swift */; };
 		53024E2625ADC515005D93C5 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53024E2525ADC515005D93C5 /* TodoTableViewCell.swift */; };
 		53024E2A25ADC675005D93C5 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53024E2925ADC675005D93C5 /* TodoListViewModel.swift */; };
+		53024E3625ADDE65005D93C5 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53024E3525ADDE65005D93C5 /* UIBarButtonItem+Extension.swift */; };
 		53F109C825AB20DE001DE388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F109C725AB20DE001DE388 /* AppDelegate.swift */; };
 		53F109CA25AB20DE001DE388 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F109C925AB20DE001DE388 /* SceneDelegate.swift */; };
 		53F109CC25AB20DE001DE388 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F109CB25AB20DE001DE388 /* TodoListViewController.swift */; };
@@ -39,6 +40,7 @@
 		53024E2125ADBB4B005D93C5 /* EditTodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodoViewModel.swift; sourceTree = "<group>"; };
 		53024E2525ADC515005D93C5 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		53024E2925ADC675005D93C5 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
+		53024E3525ADDE65005D93C5 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		53F109C425AB20DE001DE388 /* todolist-swift-mvvm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "todolist-swift-mvvm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F109C725AB20DE001DE388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53F109C925AB20DE001DE388 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,8 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				53F109DE25AB20DF001DE388 /* TodoListViewControllerSpec.swift */,
-				53F109E025AB20DF001DE388 /* Info.plist */,
 				53F109ED25AB50B9001DE388 /* EditTodoViewControllerSpec.swift */,
+				53F109E025AB20DF001DE388 /* Info.plist */,
+				53024E3525ADDE65005D93C5 /* UIBarButtonItem+Extension.swift */,
 			);
 			path = "todolist-swift-mvvmTests";
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53F109EE25AB50B9001DE388 /* EditTodoViewControllerSpec.swift in Sources */,
+				53024E3625ADDE65005D93C5 /* UIBarButtonItem+Extension.swift in Sources */,
 				53F109DF25AB20DF001DE388 /* TodoListViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
