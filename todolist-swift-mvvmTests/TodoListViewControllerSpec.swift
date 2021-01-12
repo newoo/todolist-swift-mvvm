@@ -44,6 +44,7 @@ class TodoListViewControllerSpec: QuickSpec {
             
             context("with todolist data") {
                 beforeEach {
+                    todolistViewController.viewModel.todos = Constant.todoList
                     todolistViewController.viewModel.todosOutput.onNext(Constant.todoList)
                 }
                 
@@ -76,6 +77,23 @@ class TodoListViewControllerSpec: QuickSpec {
 
                         let todoTitle = todoTableViewCell.todoTitleLabel.text
                         expect(todoTitle).toEventually(equal(Constant.newTodo.title), timeout: .seconds(3))
+                    }
+                }
+                
+                context("when delete todo") {
+                    it("does not show deleted todo") {
+                        todolistViewController.tableView.dataSource?.tableView?(todolistViewController.tableView, commit: .delete, forRowAt: IndexPath(row: 0, section: 0))
+
+                        let todosCount = todolistViewController.tableView.visibleCells.count
+                        expect(todosCount).toEventually(equal(1), timeout: .seconds(3))
+
+                        guard let todoTableViewCell = todolistViewController.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TodoTableViewCell else {
+                            fail()
+                            return
+                        }
+
+                        let todoTitle = todoTableViewCell.todoTitleLabel.text
+                        expect(todoTitle).toEventually(equal(Constant.todoList[1].title), timeout: .seconds(3))
                     }
                 }
             }
